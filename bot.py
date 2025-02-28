@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TOKEN = os.getenv("TOKEN")
-CHANNEL_ID = [int(ch) for ch in os.getenv("CHANNEL_ID").split(",")]
+CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 
 intents = discord.Intents.default()
 intents.messages = True
@@ -19,8 +19,8 @@ intents.members = True
 
 client = discord.Client(intents=intents)
 
-ATTENDANCE_TIME = "22:28"
-SUMMARY_TIME = "22:29"
+ATTENDANCE_TIME = "00:13"
+SUMMARY_TIME = "00:14"
 attendance_messages = {}
 
 async def send_daily_messages():
