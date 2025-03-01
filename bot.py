@@ -19,8 +19,8 @@ intents.members = True  # Required to fetch all members
 
 client = discord.Client(intents=intents)
 
-ATTENDANCE_TIME = "19:10"
-SUMMARY_TIME = "19:11"
+ATTENDANCE_TIME = "19:12"
+SUMMARY_TIME = "19:13"
 attendance_messages = {}
 
 async def send_daily_messages():
