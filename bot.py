@@ -15,12 +15,12 @@ intents.messages = True
 intents.reactions = True
 intents.guilds = True
 intents.message_content = True
-intents.members = True 
+intents.members = True  # Required to fetch all members
 
 client = discord.Client(intents=intents)
 
-ATTENDANCE_TIME = "00:13"
-SUMMARY_TIME = "00:14"
+ATTENDANCE_TIME = "18:59"
+SUMMARY_TIME = "19:00"
 attendance_messages = {}
 
 async def send_daily_messages():
@@ -28,7 +28,7 @@ async def send_daily_messages():
     channel = client.get_channel(CHANNEL_ID)
 
     if channel is None:
-        print(f"ERROR: Cannot find channel with ID {CHANNEL_ID}. Check permissions.")
+        print(f"❌ ERROR: Cannot find channel with ID {CHANNEL_ID}. Check permissions.")
         return
 
     while True:
@@ -85,7 +85,7 @@ async def send_summary(channel):
         embed = discord.Embed(title=f"Attendance Summary for {today}", color=discord.Color.blue())
         embed.add_field(name=f"Present ({len(present_users)})", value="\n".join(present_users.values()) if present_users else "None", inline=False)
         embed.add_field(name=f"Absent ({len(absent_users)})", value="\n".join(absent_users.values()) if absent_users else "None", inline=False)
-        embed.set_footer(text="whatever")
+        embed.set_footer(text="Generated automatically")
 
         await channel.send(embed=embed)
 
